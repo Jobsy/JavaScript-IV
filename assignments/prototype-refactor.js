@@ -91,32 +91,37 @@ Prototype Refactor
 //   }
 
 class Person {
+
     constructor(attr) {
         this.name = attr.name;
-    this.age = attr.age;
-    this.stomach = [];
+        this.age = attr.age;
+        this.stomach = [];
     }
     
   
     great = function greater() {
-      return `My name is ${this.name}, and I'm ${this.age} years old`;
+        return `My name is ${this.name}, and I'm ${this.age} years old`;
     }
   
     intro = function eatEdibles() {
-      let edible = true;
-      let edibles = ["apples", "vegetables", "banana"];
-      if (edible) {
-        this.stomach.push(edibles);
-      }
-      return this.stomach;
+        let edible = true;
+        let edibles = ["apples", "vegetables", "banana"];
+
+        if (edible) {
+            this.stomach.push(edibles);
+        }
+
+        return this.stomach;
     }
   
     poop = function poopPoop() {
-      let pooping = true;
-      if (pooping) {
-        this.stomach.length = 0;
-      }
-      return this.stomach;
+        let pooping = true;
+
+        if (pooping) {
+            this.stomach.length = 0;
+        }
+
+        return this.stomach;
     }
 }
 //   const jay = new Person({name:"jj", age:23});
@@ -164,29 +169,32 @@ class Person {
 //   // const bmw = new Car({model:"X6", make:"BMW" });
   
 class Car {
-  constructor(attr) {
-      this.model = attr.model;
-    this.make = attr.make;
-    this.odometer = 0;
-  }
-    
-  drive = function driveCar() {
-    this.odometer += 20;
-  }
-  
-  crash = function crashCar() {
-    let crashed = true;
-    if (crashed) {
-      return `I crashed at ${this.odometer} miles!`
+
+    constructor(attr) {
+        this.model = attr.model;
+        this.make = attr.make;
+        this.odometer = 0;
     }
-  }
-  
-  repair = function repairCar() {
-    let repaired = true;
-    if (repaired) {
-      return `I just repaired my crashed car, now I can drive again!`
+
+    drive = function driveCar() {
+        this.odometer += 20;
     }
-  }
+
+    crash = function crashCar() {
+        let crashed = true;
+
+        if (crashed) {
+            return `I crashed at ${this.odometer} miles!`
+        }
+    }
+
+    repair = function repairCar() {
+        let repaired = true;
+
+        if (repaired) {
+            return `I just repaired my crashed car, now I can drive again!`
+        }
+    }
 }
 // const bmw = new Car({model:"X6", make:"BMW" });
   
@@ -217,7 +225,24 @@ class Car {
 //   Baby.prototype.cryCry = function crying() {
 //     return this.play = "Baby JJ is not cute when crying"
 //   };
-  // const babyJay = new Baby({ name: "baby jj", age: "8 months", play: "I want to play!", cry: "Weeemmmm weeemmmmm" });
+
+class Baby extends Person{
+
+    constructor(babyAttr) {
+        super(babyAttr);
+        this.play = babyAttr.play;
+        this.cry = babyAttr.cry;
+    }
+
+    playPlay = function playing() {
+        return this.play = "Baby JJ is so cute, and such a fun baby to play with"
+    }
+    
+    cryCry = function crying() {
+        return this.play = "Baby JJ is not cute when crying"
+    };
+} 
+// const babyJay = new Baby({ name: "baby jj", age: "8 months", play: "I want to play!", cry: "Weeemmmm weeemmmmm" });
   
   
   
