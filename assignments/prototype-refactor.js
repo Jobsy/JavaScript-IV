@@ -361,7 +361,22 @@ const jj = new Department({
 //     return `${this.name} was removed from the game.`;
 //   }
 //   // const jjj = new GameObject({createdAt: "eeee", name: "kkkk", dimensions: 833});
+
+class GameObject {
+
+    constructor(gameAttr) {
+        this.createdAt = gameAttr.createdAt;
+        this.name = gameAttr.name;
+        this.dimensions = gameAttr.dimensions;
+    }
+    
+    destroy = function() {
+        return `${this.name} was removed from the game.`;
+    }
+}
   
+//   GameObject.prototype.
+  // const jjj = new GameObject({createdAt: "eeee", name: "kkkk", dimensions: 833});
   
   /*
     === CharacterStats ===
@@ -382,6 +397,21 @@ const jj = new Department({
 //   }
 //   // const jj = new CharacterStats({createdAt: "rrr", name: "wfvvvev", dimensions: 33, healthPoints: 55});
   
+class CharacterStats extends GameObject {
+
+    constructor(charAttr){
+        super(charAttr);
+        this.healthPoints = charAttr.healthPoints;
+    }
+  
+    takeDamage = function() {
+        return `${this.name} took damage`;
+    }
+}
+  
+//   CharacterStats.prototype = Object.create(GameObject.prototype);
+  
+//   CharacterStats.prototype.
   
   /*
     === Humanoid (Having an appearance or character resembling that of a human.) ===
@@ -406,7 +436,21 @@ const jj = new Department({
 //   Humanoid.prototype.greet = function() {
 //     return `${this.name} offers a greeting in ${this.language}`;
 //   }
-  
+
+class Humanoid extends CharacterStats{
+
+    constructor(hAttr) {
+        super(hAttr);
+        this.name = hAttr.name;
+        this.team = hAttr.team;
+        this.weapons = hAttr.weapons;
+        this.language = hAttr.language;
+    }
+
+    greet = function() {
+        return `${this.name} offers a greeting in ${this.language}`;
+    }
+}
   
   
   /*
@@ -418,62 +462,73 @@ const jj = new Department({
   // Test you work by un-commenting these 3 objects and the list of console logs below:
   
   
-    // const mage = new Humanoid({
-    //   createdAt: new Date(),
-    //   dimensions: {
-    //     length: 2,
-    //     width: 1,
-    //     height: 1,
-    //   },
-    //   healthPoints: 5,
-    //   name: 'Bruce',
-    //   team: 'Mage Guild',
-    //   weapons: [
-    //     'Staff of Shamalama',
-    //   ],
-    //   language: 'Common Tongue',
-    // });
-    // const swordsman = new Humanoid({
-    //   createdAt: new Date(),
-    //   dimensions: {
-    //     length: 2,
-    //     width: 2,
-    //     height: 2,
-    //   },
-    //   healthPoints: 15,
-    //   name: 'Sir Mustachio',
-    //   team: 'The Round Table',
-    //   weapons: [
-    //     'Giant Sword',
-    //     'Shield',
-    //   ],
-    //   language: 'Common Tongue',
-    // });
-    // const archer = new Humanoid({
-    //   createdAt: new Date(),
-    //   dimensions: {
-    //     length: 1,
-    //     width: 2,
-    //     height: 4,
-    //   },
-    //   healthPoints: 10,
-    //   name: 'Lilith',
-    //   team: 'Forest Kingdom',
-    //   weapons: [
-    //     'Bow',
-    //     'Dagger',
-    //   ],
-    //   language: 'Elvish',
-    // });
-    // console.log(mage.createdAt); // Today's date
-    // console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
-    // console.log(swordsman.healthPoints); // 15
-    // console.log(mage.name); // Bruce
-    // console.log(swordsman.team); // The Round Table
-    // console.log(mage.weapons); // Staff of Shamalama
-    // console.log(archer.language); // Elvish
-    // console.log(archer.greet()); // Lilith offers a greeting in Elvish.
-    // console.log(mage.takeDamage()); // Bruce took damage.
-    // console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-  
-  
+const mage = new Humanoid(
+
+    {
+        createdAt: new Date(),
+        dimensions: {
+            length: 2,
+            width: 1,
+            height: 1,
+        },
+        healthPoints: 5,
+        name: 'Bruce',
+        team: 'Mage Guild',
+        weapons: [
+            'Staff of Shamalama',
+        ],
+        language: 'Common Tongue',
+    }
+);
+
+const swordsman = new Humanoid(
+    
+    {
+        createdAt: new Date(),
+        dimensions: {
+            length: 2,
+            width: 2,
+            height: 2,
+        },
+        healthPoints: 15,
+        name: 'Sir Mustachio',
+        team: 'The Round Table',
+        weapons: [
+            'Giant Sword',
+            'Shield',
+        ],
+        language: 'Common Tongue',
+    }
+);
+
+const archer = new Humanoid(
+    
+    {
+        createdAt: new Date(),
+        dimensions: {
+            length: 1,
+            width: 2,
+            height: 4,
+        },
+        healthPoints: 10,
+        name: 'Lilith',
+        team: 'Forest Kingdom',
+        weapons: [
+            'Bow',
+            'Dagger',
+        ],
+        language: 'Elvish',
+    }
+);
+
+console.log(mage.createdAt); // Today's date
+console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
+console.log(swordsman.healthPoints); // 15
+console.log(mage.name); // Bruce
+console.log(swordsman.team); // The Round Table
+console.log(mage.weapons); // Staff of Shamalama
+console.log(archer.language); // Elvish
+console.log(archer.greet()); // Lilith offers a greeting in Elvish.
+console.log(mage.takeDamage()); // Bruce took damage.
+console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+
