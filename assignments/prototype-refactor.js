@@ -100,7 +100,7 @@ class Person {
   
     great = function greater() {
       return `My name is ${this.name}, and I'm ${this.age} years old`;
-    };
+    }
   
     intro = function eatEdibles() {
       let edible = true;
@@ -109,7 +109,7 @@ class Person {
         this.stomach.push(edibles);
       }
       return this.stomach;
-    };
+    }
   
     poop = function poopPoop() {
       let pooping = true;
@@ -117,8 +117,8 @@ class Person {
         this.stomach.length = 0;
       }
       return this.stomach;
-    };
-  }
+    }
+}
 //   const jay = new Person({name:"jj", age:23});
   
   
@@ -162,6 +162,33 @@ class Person {
 //     };
 //   };
 //   // const bmw = new Car({model:"X6", make:"BMW" });
+  
+class Car {
+  constructor(attr) {
+      this.model = attr.model;
+    this.make = attr.make;
+    this.odometer = 0;
+  }
+    
+  drive = function driveCar() {
+    this.odometer += 20;
+  }
+  
+  crash = function crashCar() {
+    let crashed = true;
+    if (crashed) {
+      return `I crashed at ${this.odometer} miles!`
+    }
+  }
+  
+  repair = function repairCar() {
+    let repaired = true;
+    if (repaired) {
+      return `I just repaired my crashed car, now I can drive again!`
+    }
+  }
+}
+// const bmw = new Car({model:"X6", make:"BMW" });
   
   
   
