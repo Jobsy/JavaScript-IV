@@ -289,7 +289,46 @@ class Baby extends Person{
 //   });
 //   // jj.intro();
 //   // jj.celebrate();
+
+class Student {
+
+    constructor(attributes) {
+        this.course = attributes.course;
+        this.weight = attributes.weight;
+        this.height = attributes.height;
+        this.gender = attributes.gender;
+    }
+    
+    intro = function() {
+        console.log(`Welcome to Lambda ${this.course}`);
+    }
+}
   
+class Department extends Student {
+
+    constructor(courseAttributes) {
+        super(courseAttributes);
+        this.name = courseAttributes.name;
+        this.pass = courseAttributes.pass;
+    }
+
+    celebrate = function() {
+        console.log(`${this.name}, ${this.pass}`);
+    }
+}
+  
+const jj = new Department({
+    'name': 'JS III',
+    'course': "webeu3",
+    'weight': 40,
+    'height': 12,
+    'gender': 'male',
+    'pass': 'yes I passed it!'
+});
+// jj.intro();
+// jj.celebrate();
+  
+
   
   
   
