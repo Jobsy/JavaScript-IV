@@ -62,17 +62,47 @@ Prototype Refactor
 */
 
 
-function Person(attr) {
+// function Person(attr) {
 
-    this.name = attr.name;
+//     this.name = attr.name;
+//     this.age = attr.age;
+//     this.stomach = [];
+  
+//     this.great = function greater() {
+//       return `My name is ${this.name}, and I'm ${this.age} years old`;
+//     };
+  
+//     this.intro = function eatEdibles() {
+//       let edible = true;
+//       let edibles = ["apples", "vegetables", "banana"];
+//       if (edible) {
+//         this.stomach.push(edibles);
+//       }
+//       return this.stomach;
+//     };
+  
+//     this.poop = function poopPoop() {
+//       let pooping = true;
+//       if (pooping) {
+//         this.stomach.length = 0;
+//       }
+//       return this.stomach;
+//     };
+//   }
+
+class Person {
+    constructor(attr) {
+        this.name = attr.name;
     this.age = attr.age;
     this.stomach = [];
+    }
+    
   
-    this.great = function greater() {
+    great = function greater() {
       return `My name is ${this.name}, and I'm ${this.age} years old`;
     };
   
-    this.intro = function eatEdibles() {
+    intro = function eatEdibles() {
       let edible = true;
       let edibles = ["apples", "vegetables", "banana"];
       if (edible) {
@@ -81,7 +111,7 @@ function Person(attr) {
       return this.stomach;
     };
   
-    this.poop = function poopPoop() {
+    poop = function poopPoop() {
       let pooping = true;
       if (pooping) {
         this.stomach.length = 0;
@@ -89,7 +119,7 @@ function Person(attr) {
       return this.stomach;
     };
   }
-  // const jay = new Person({name:"jj", age:23});
+//   const jay = new Person({name:"jj", age:23});
   
   
   
@@ -107,31 +137,31 @@ function Person(attr) {
   */
   
   
-  function Car(attr) {
+//   function Car(attr) {
   
-    this.model = attr.model;
-    this.make = attr.make;
-    this.odometer = 0;
-  }
+//     this.model = attr.model;
+//     this.make = attr.make;
+//     this.odometer = 0;
+//   }
   
-  Car.prototype.drive = function driveCar() {
-    this.odometer += 20;
-  };
+//   Car.prototype.drive = function driveCar() {
+//     this.odometer += 20;
+//   };
   
-  Car.prototype.crash = function crashCar() {
-    let crashed = true;
-    if (crashed) {
-      return `I crashed at ${this.odometer} miles!`
-    };
-  };
+//   Car.prototype.crash = function crashCar() {
+//     let crashed = true;
+//     if (crashed) {
+//       return `I crashed at ${this.odometer} miles!`
+//     };
+//   };
   
-  Car.prototype.repair = function repairCar() {
-    let repaired = true;
-    if (repaired) {
-      return `I just repaired my crashed car, now I can drive again!`
-    };
-  };
-  // const bmw = new Car({model:"X6", make:"BMW" });
+//   Car.prototype.repair = function repairCar() {
+//     let repaired = true;
+//     if (repaired) {
+//       return `I just repaired my crashed car, now I can drive again!`
+//     };
+//   };
+//   // const bmw = new Car({model:"X6", make:"BMW" });
   
   
   
@@ -145,21 +175,21 @@ function Person(attr) {
     - By playing, a string is returned with some text of your choosing.
   */
   
-  function Baby(babyAttr) {
-    Person.call(this, babyAttr);
-    this.play = babyAttr.play;
-    this.cry = babyAttr.cry;
-  }
+//   function Baby(babyAttr) {
+//     Person.call(this, babyAttr);
+//     this.play = babyAttr.play;
+//     this.cry = babyAttr.cry;
+//   }
   
-  Baby.prototype = Object.create(Person.prototype);
+//   Baby.prototype = Object.create(Person.prototype);
   
-  Baby.prototype.playPlay = function playing() {
-    return this.play = "Baby JJ is so cute, and such a fun baby to play with"
-  };
+//   Baby.prototype.playPlay = function playing() {
+//     return this.play = "Baby JJ is so cute, and such a fun baby to play with"
+//   };
   
-  Baby.prototype.cryCry = function crying() {
-    return this.play = "Baby JJ is not cute when crying"
-  };
+//   Baby.prototype.cryCry = function crying() {
+//     return this.play = "Baby JJ is not cute when crying"
+//   };
   // const babyJay = new Baby({ name: "baby jj", age: "8 months", play: "I want to play!", cry: "Weeemmmm weeemmmmm" });
   
   
@@ -173,40 +203,40 @@ function Person(attr) {
     complicated one with lots of state. Surprise us!
   */
   
-  function Student(attributes) {
-    this.course = attributes.course;
-    this.weight = attributes.weight;
-    this.height = attributes.height;
-    this.gender = attributes.gender;
-  }
+//   function Student(attributes) {
+//     this.course = attributes.course;
+//     this.weight = attributes.weight;
+//     this.height = attributes.height;
+//     this.gender = attributes.gender;
+//   }
   
-  Student.prototype.intro = function() {
-    console.log(`Welcome to Lambda ${this.course}`);
-  }
+//   Student.prototype.intro = function() {
+//     console.log(`Welcome to Lambda ${this.course}`);
+//   }
   
-  function Department(courseAttributes) {
+//   function Department(courseAttributes) {
     
-    Student.call(this, courseAttributes);
-    this.name = courseAttributes.name;
-    this.pass = courseAttributes.pass;
-  }
+//     Student.call(this, courseAttributes);
+//     this.name = courseAttributes.name;
+//     this.pass = courseAttributes.pass;
+//   }
   
-  Department.prototype = Object.create(Student.prototype);
+//   Department.prototype = Object.create(Student.prototype);
   
-  Department.prototype.celebrate = function() {
-    console.log(`${this.name}, ${this.pass}`);
-  }
+//   Department.prototype.celebrate = function() {
+//     console.log(`${this.name}, ${this.pass}`);
+//   }
   
-  const jj = new Department({
-    'name': 'JS III',
-    'course': "webeu3",
-    'weight': 40,
-    'height': 12,
-    'gender': 'male',
-    'pass': 'yes I passed it!'
-  });
-  // jj.intro();
-  // jj.celebrate();
+//   const jj = new Department({
+//     'name': 'JS III',
+//     'course': "webeu3",
+//     'weight': 40,
+//     'height': 12,
+//     'gender': 'male',
+//     'pass': 'yes I passed it!'
+//   });
+//   // jj.intro();
+//   // jj.celebrate();
   
   
   
@@ -230,16 +260,16 @@ function Person(attr) {
     * destroy() // prototype method that returns: `${this.name} was removed from the game.`
   */
   
-  function GameObject(gameAttr) {
-    this.createdAt = gameAttr.createdAt;
-    this.name = gameAttr.name
-    this.dimensions = gameAttr.dimensions
-  }
+//   function GameObject(gameAttr) {
+//     this.createdAt = gameAttr.createdAt;
+//     this.name = gameAttr.name
+//     this.dimensions = gameAttr.dimensions
+//   }
   
-  GameObject.prototype.destroy = function() {
-    return `${this.name} was removed from the game.`;
-  }
-  // const jjj = new GameObject({createdAt: "eeee", name: "kkkk", dimensions: 833});
+//   GameObject.prototype.destroy = function() {
+//     return `${this.name} was removed from the game.`;
+//   }
+//   // const jjj = new GameObject({createdAt: "eeee", name: "kkkk", dimensions: 833});
   
   
   /*
@@ -249,17 +279,17 @@ function Person(attr) {
     * should inherit destroy() from GameObject's prototype
   */
   
-  function CharacterStats(charAttr) {
-    GameObject.call(this, charAttr);
-    this.healthPoints = charAttr.healthPoints;
-  }
+//   function CharacterStats(charAttr) {
+//     GameObject.call(this, charAttr);
+//     this.healthPoints = charAttr.healthPoints;
+//   }
   
-  CharacterStats.prototype = Object.create(GameObject.prototype);
+//   CharacterStats.prototype = Object.create(GameObject.prototype);
   
-  CharacterStats.prototype.takeDamage = function() {
-    return `${this.name} took damage`;
-  }
-  // const jj = new CharacterStats({createdAt: "rrr", name: "wfvvvev", dimensions: 33, healthPoints: 55});
+//   CharacterStats.prototype.takeDamage = function() {
+//     return `${this.name} took damage`;
+//   }
+//   // const jj = new CharacterStats({createdAt: "rrr", name: "wfvvvev", dimensions: 33, healthPoints: 55});
   
   
   /*
@@ -272,19 +302,19 @@ function Person(attr) {
     * should inherit takeDamage() from CharacterStats
   */
   
-  function Humanoid(hAttr) {
-    CharacterStats.call(this, hAttr);
-    this.name = hAttr.name;
-    this.team = hAttr.team;
-    this.weapons = hAttr.weapons;
-    this.language = hAttr.language;
-  }
+//   function Humanoid(hAttr) {
+//     CharacterStats.call(this, hAttr);
+//     this.name = hAttr.name;
+//     this.team = hAttr.team;
+//     this.weapons = hAttr.weapons;
+//     this.language = hAttr.language;
+//   }
   
-  Humanoid.prototype = Object.create(CharacterStats.prototype);
+//   Humanoid.prototype = Object.create(CharacterStats.prototype);
   
-  Humanoid.prototype.greet = function() {
-    return `${this.name} offers a greeting in ${this.language}`;
-  }
+//   Humanoid.prototype.greet = function() {
+//     return `${this.name} offers a greeting in ${this.language}`;
+//   }
   
   
   
@@ -297,62 +327,62 @@ function Person(attr) {
   // Test you work by un-commenting these 3 objects and the list of console logs below:
   
   
-    const mage = new Humanoid({
-      createdAt: new Date(),
-      dimensions: {
-        length: 2,
-        width: 1,
-        height: 1,
-      },
-      healthPoints: 5,
-      name: 'Bruce',
-      team: 'Mage Guild',
-      weapons: [
-        'Staff of Shamalama',
-      ],
-      language: 'Common Tongue',
-    });
-    const swordsman = new Humanoid({
-      createdAt: new Date(),
-      dimensions: {
-        length: 2,
-        width: 2,
-        height: 2,
-      },
-      healthPoints: 15,
-      name: 'Sir Mustachio',
-      team: 'The Round Table',
-      weapons: [
-        'Giant Sword',
-        'Shield',
-      ],
-      language: 'Common Tongue',
-    });
-    const archer = new Humanoid({
-      createdAt: new Date(),
-      dimensions: {
-        length: 1,
-        width: 2,
-        height: 4,
-      },
-      healthPoints: 10,
-      name: 'Lilith',
-      team: 'Forest Kingdom',
-      weapons: [
-        'Bow',
-        'Dagger',
-      ],
-      language: 'Elvish',
-    });
-    console.log(mage.createdAt); // Today's date
-    console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
-    console.log(swordsman.healthPoints); // 15
-    console.log(mage.name); // Bruce
-    console.log(swordsman.team); // The Round Table
-    console.log(mage.weapons); // Staff of Shamalama
-    console.log(archer.language); // Elvish
-    console.log(archer.greet()); // Lilith offers a greeting in Elvish.
-    console.log(mage.takeDamage()); // Bruce took damage.
-    console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+    // const mage = new Humanoid({
+    //   createdAt: new Date(),
+    //   dimensions: {
+    //     length: 2,
+    //     width: 1,
+    //     height: 1,
+    //   },
+    //   healthPoints: 5,
+    //   name: 'Bruce',
+    //   team: 'Mage Guild',
+    //   weapons: [
+    //     'Staff of Shamalama',
+    //   ],
+    //   language: 'Common Tongue',
+    // });
+    // const swordsman = new Humanoid({
+    //   createdAt: new Date(),
+    //   dimensions: {
+    //     length: 2,
+    //     width: 2,
+    //     height: 2,
+    //   },
+    //   healthPoints: 15,
+    //   name: 'Sir Mustachio',
+    //   team: 'The Round Table',
+    //   weapons: [
+    //     'Giant Sword',
+    //     'Shield',
+    //   ],
+    //   language: 'Common Tongue',
+    // });
+    // const archer = new Humanoid({
+    //   createdAt: new Date(),
+    //   dimensions: {
+    //     length: 1,
+    //     width: 2,
+    //     height: 4,
+    //   },
+    //   healthPoints: 10,
+    //   name: 'Lilith',
+    //   team: 'Forest Kingdom',
+    //   weapons: [
+    //     'Bow',
+    //     'Dagger',
+    //   ],
+    //   language: 'Elvish',
+    // });
+    // console.log(mage.createdAt); // Today's date
+    // console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
+    // console.log(swordsman.healthPoints); // 15
+    // console.log(mage.name); // Bruce
+    // console.log(swordsman.team); // The Round Table
+    // console.log(mage.weapons); // Staff of Shamalama
+    // console.log(archer.language); // Elvish
+    // console.log(archer.greet()); // Lilith offers a greeting in Elvish.
+    // console.log(mage.takeDamage()); // Bruce took damage.
+    // console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
   
   
