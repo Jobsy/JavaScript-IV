@@ -32,11 +32,18 @@ class Instructor extends Person2 {
     grade = function grading(student, subject) {
         return `${student} receives a perfect score on ${subject}`;
     };
-}
 
+    randomGrade = function randomGrading() {
+        if((Student2.grade > 70 && Student2.grade < 99) || Student2.grade > 100) {
+            return Student2.grade = Student2.grade - Math.floor(Math.random() * 21);
+        }
+        return Student2.grade = Student2.grade + Math.floor(Math.random() * 21);
+    }
+}
 
 class Student2 extends Person2 {
 
+    static grade = 70;
     constructor(studentAttr) {
         super(studentAttr);
         this.previousBackground = studentAttr.previousBackground;
@@ -49,12 +56,19 @@ class Student2 extends Person2 {
     };
 
     PRAssignment = function PRAsgn(subject) {
-        return `${this.name} has submitted a PR for ${subject}`
+        return `${this.name} has submitted a PR for ${subject}`;
     };
 
     sprintChallenge = function sChlg(subject) {
-        return `${this.name} has begun sprint challenge on ${subject}`
+        return `${this.name} has begun sprint challenge on ${subject}`;
     };
+    
+    graduate = function clearForGradustion() {
+        if(Student2.grade < 70) {
+            return `Sorry, your score ${Student2.grade}% is below the pass mark of 70%;you'll have to retake the class`;
+        }
+        return `Congratulation! You score ${Student2.grade}% is above the 70% pass mark, you clear for graduation`;
+    }
 }
 
 
@@ -89,7 +103,8 @@ const fred = new Instructor(
 console.log(fred.speak());
 console.log(fred.demo("JS Class"));
 console.log(fred.grade("Fred", "JS Class"));
-
+console.log(fred.randomGrade());
+console.log(fred.randomGrade());
 
 
 const jay = new Student2(
@@ -106,6 +121,7 @@ console.log(jay.speak());
 console.log(jay.listsSubjects("JS Class"));
 console.log(jay.PRAssignment("JavaScript-IV"));
 console.log(jay.sprintChallenge("JavaScript Fundamentals"));
+console.log(jay.graduate());
 
 
 const flint = new ProjectManager(
@@ -122,3 +138,4 @@ console.log(flint.standUp("jsChannel"));
 console.log(flint.debugsCode("Jay", "JavaScript"));
 console.log(flint.demo("JS Class"));
 console.log(flint.grade("Flint", "JS Class"));
+console.log(flint.randomGrade());
